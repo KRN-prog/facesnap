@@ -1,0 +1,14 @@
+<article class="faceSnap" [ngClass]="{ faceSnapLiked: buttonText === 'Unlike' }">
+    <h2 class="faceSnap-title">{{ faceSnap.title | uppercase }}</h2>
+    <img class="faceSnap-img" [src]="faceSnap.imageUrl" [alt]="faceSnap.imageUrl" />
+    <span class="faceSnap-description">Description: {{ faceSnap.description }}</span>
+    <span class="faceSnap-creationDate">Photo ajouté {{ faceSnap.creationDate | date: 'le dd/mm/yyyy à HH:mm' }}</span>
+
+    <div class="faceSnap-cityLikeContainer">
+        <span class="faceSnap-location" *ngIf="faceSnap.location">{{ faceSnap.location }}</span>
+
+        <span class="faceSnap-like">
+            <button class="btn btn--like" (click)="addOnLike()" [ngClass]="{ btnUnlike: buttonText === 'Unlike' }">{{ buttonText }}</button><span class="faceSnap-likeTxt" [ngStyle]="{color: 'rgb(0,'+ faceSnap.like * 100 +',0)'}">{{ faceSnap.like }}</span>
+        </span>
+    </div>
+</article>
